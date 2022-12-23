@@ -1,0 +1,61 @@
+* {
+    /* setting basic setup for the background appearance of the game */
+    margin: 0;
+    padding: 0;
+    background-color: rgb(151, 106, 255);
+    overflow: hidden;
+}
+
+
+/* style for the paddle */
+.paddle {
+    --position: 50;
+    position: absolute;
+    background-color: white;
+    top: calc(var(--position) * 1vh);
+    /* position of paddle from top*/
+    transform: translateY(-50%);
+    /* to make the paddle be placed at the center */
+    width: 1vw;
+    height: 10vh;
+}
+
+/* for placement of left paddle */
+.paddle.left {
+    left: 1vw;
+}
+
+/* for placement of right paddle */
+.paddle.right {
+    right: 1vw;
+}
+
+/* styles for the ball */
+.ball {
+    --x: 50;
+    --y: 50;
+    position: absolute;
+    background-color: white;
+    left: calc(var(--y) * 1vw);
+    top: calc(var(--x) * 1vh);
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+/* styles for the score board */
+.score {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: white;
+}
+
+.high {
+    position: absolute;
+    right: 2vw;
+    color: white;
+    font-size: 1rem;
+}
