@@ -1,5 +1,5 @@
 //importing classes
-import Ball from "./ball.js"        
+import Ball from "./ball.js"
 import Paddle from "./paddle.js"
 
 //elements from the document
@@ -28,8 +28,8 @@ function update(time) {
         if (isLose()) {
             handleLose();
             lastTime = undefined;
-            name = window.prompt("Your score: " + score +"\nHighest score: " + high_name.innerText +" "+ high_score.innerText + "\nEnter player name.");
-            player_name.innerText = name;
+            name = window.prompt("Your score: " + score + "\nHighest score: " + high_name.innerText + " " + high_score.innerText + "\nEnter player name.");
+            if (name != "") { player_name.innerText = name; }
         }
         else {
             lastTime = time;
@@ -52,16 +52,13 @@ function handleLose() {
     paddle2.reset();
     score = parseInt(player_score.innerText);
     player_score.innerText = 0;
-    if(score>0)
-    {
-        if(high_name.innerText == "N/A")
-        {
-            high_name.innerText = name;
+    if (score > 0) {
+        if (high_name.innerText == "N/A") {
+            high_name.innerText = player_name.innerText;
             high_score.innerText = parseInt(score);
         }
-        else if(parseInt(high_score.innerText) < score)
-        {
-            high_name.innerText = name;
+        else if (parseInt(high_score.innerText) < score) {
+            high_name.innerText = player_name.innerText;
             high_score.innerText = parseInt(score);
         }
     }
@@ -83,12 +80,11 @@ document.addEventListener('keydown', function (event) {
 
 //the game will start with this main function
 function main() {
-    if(high_name.innerText == "N/A" )
-    {
+    if (high_name.innerText == "N/A") {
         window.alert("This is your first time playing. \nControls: Up and Down arrow keys. \nPress Enter to Start.");
     }
     name = prompt("Enter Player name.")
-    player_name.innerText = name;
+    if (name != "") { player_name.innerText = name; }
     document.addEventListener('keypress', function (event) {
         if (event.key == 'Enter') {
             window.requestAnimationFrame(update);
@@ -96,3 +92,4 @@ function main() {
     })
 }
 window.requestAnimationFrame(main)
+
